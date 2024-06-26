@@ -19,13 +19,13 @@ public class Pow implements PowInterface{
         if (y < 0 ) throw new IllegalArgumentException("Значение степени должно быть > 0");
         this.y = y;
     }
-    @Cache
+    @Cache(lifetime = 40)
     public Integer getResult(){
         System.out.println("invoke getResult()");
         Double result = Math.pow(x,y);
         return result.intValue();
     }
-    @Cache
+    @Cache(lifetime = 30)
     @Override
     public String toString() {
         System.out.println("invoke toString()");

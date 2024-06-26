@@ -10,4 +10,13 @@ public class Utils {
                 new MakeCache(objectIncome)
         );
     }
+
+    public static <T> T cacheWithClean(T objectIncome, int numElements){
+        return (T) Proxy.newProxyInstance(
+                objectIncome.getClass().getClassLoader(),
+                objectIncome.getClass().getInterfaces(),
+                new MakeCache(objectIncome, numElements)
+        );
+    }
+
 }
